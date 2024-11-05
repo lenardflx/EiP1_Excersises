@@ -88,7 +88,14 @@ Im schlimmsten Fall muss jede  ``Referenzsocke`` alle anderen Socken von ``ungep
 Die while schleife läuft genau $n/2$ durch, da sie jeden Durchgang 2 Socken entfernt und ein Paar bildet.
 
 In einer zufällgen $k$-ten Iteration sind noch $n-2\cdot(k-1)$ Socken da.
-$$ \begin{split} It_1&: 100-2*(1-1)=100\\It_2&: 100-2*(2-1)=98\\ It_n&:... \end{split}$$
+
+$$
+\begin{split}
+    It_1&: 100-2*(1-1)=100\\
+    It_2&: 100-2*(2-1)=98\\
+    It_n&:...
+\end{split}
+$$
 
 Dazu kommt, dass in dieser $k$-ten Interation eine Referenzsocke abgezogen wurde. Daraus folgt:
 
@@ -101,6 +108,7 @@ $$
 $$
 
 Im gegebenen Beispiel wäre dies dann:
+
 $$
 \begin{split}
     \sum_{k=1}^{50} &=100-2k+1\\&=2500
@@ -134,7 +142,7 @@ while(farb_stapel ist nicht leer):
 
 Im schlimmsten Fall muss jede ``Referenzsocke`` alle anderen Socken im ``farb_stapel`` durchsuchen, bis sie ihr Paar findet. Da die Socken nun nach Farben gruppiert sind, ist die Anzahl der Iterationen geringer.
 
-Da gegeben ist, dass alle $ n $ Socken, gleichmäßig auf $ f $ Farben verteilt sind, hat jede Farbe $ n/f $ Socken. 
+Da gegeben ist, dass alle $n$ Socken, gleichmäßig auf $f$ Farben verteilt sind, hat jede Farbe $n/f$ Socken. 
 
 Daraus ergibt sich:
 
@@ -150,7 +158,7 @@ $$
 \end{split}
 $$
 
-Im Vergleich zum Algorithmus aus Aufgabe 2 reduziert sich die Laufzeit, da jede Socke nur mit den Socken ihrer eigenen Farbe verglichen wird und nicht mit allen $ n $ Socken. Dies sieht man, wenn man die gegebenen Werte einfügt (2500 vorher, 500 nachher).
+Im Vergleich zum Algorithmus aus Aufgabe 2 reduziert sich die Laufzeit, da jede Socke nur mit den Socken ihrer eigenen Farbe verglichen wird und nicht mit allen $n$ Socken. Dies sieht man, wenn man die gegebenen Werte einfügt (2500 vorher, 500 nachher).
 
 ## Aufgabe Quadratwurzel
 ### Aufgabe 1)
