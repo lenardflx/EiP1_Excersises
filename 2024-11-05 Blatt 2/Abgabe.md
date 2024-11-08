@@ -1,4 +1,4 @@
-# Abgage
+# Abgabe
 
 ## Aufgabe Wegbeschreibung
 
@@ -6,63 +6,68 @@
 
 ```
 // Ausgangspunkt
-Ich bin eine Person ohne gespeichertes Wissen über das Gebäude Staudingerweg 9.
-Ich befinde mich im Raum der Mathe/Informatik Fachschaft im 4. OG des Staudingerweg 9.
+
+Eine Person befindet sich im Fachschaftsraum der Informatik im 4. OG des Staudingerweg 9
+
 
 // Zum Fachschaftskühlschrank gehen
-Ich verlasse den Raum der Fachschaft und betrete damit den Flur.
-Ich gehe geradeaus in das Zimmer gegenüber mit der Aufschrift Fachschaftsküche.
-Ich betrete die Fachschaftsküche.
-Ich gehe zum Kühlschrank.
+
+Verlasse den Raum der Fachschaft
+Gehe in das Zimmer mit der Aufschrift Fachschaftsküche
+
 
 // Prüfen, ob Eistee im Kühlschrank ist
-Ich öffne den Kühlschrank.
-Ich suche im Kühlschrank nach Eistee.
+
+Öffne den Kühlschrank.
 Wenn Eistee ∈ Kühlschrank:
-    Ich nehme eine Flasche Eistee heraus.
-    Ich schließe den Kühlschrank.
-    Ich bezahle den Eistee.
-    Ich trinke den Eistee.
+    Nehme den Eistee heraus
+    Trinke den Eistee
+    Beende den gesamten Vorgang
 
-    Ich beende den gesamten Vorgang.
-
-Sonst:
-    Ich schließe den Kühlschrank.
 
 // Zum Getränkeautomaten gehen
-Ich verlasse die Fachschaftsküche.
-Ich gehe nach rechts bis zum Ende des Flurs.
-Ich verlasse den Flur und gelange in das Foyer.
-Ich gehe nach links zum Aufzug.
-Ich drücke den Knopf, um den Aufzug zu rufen.
-Während der Aufzug nicht da ist:
-    Ich warte.
-Ich betrete den Aufzug.
-Ich drücke den Knopf für das Erdgeschoss (EG).
-Solange der Aufzug nicht im EG ist:
-    Ich warte.
-Ich verlasse den Aufzug im Erdgeschoss.
-Ich gehe zum Getränkeautomaten gegenüber des Aufzugs.
 
-// Getränk im Automaten kaufen
-Ich überprüfe die Auswahl am Getränkeautomaten auf Eistee.
-Wenn Eistee ∈ Automaten:
-    Ich wähle Eistee am Automaten aus.
-    Ich bezahle den Eistee.
-    Ich nehme den Eistee aus dem Automaten.
-    Ich trinke den Eistee.
+Schließe den Kühlschrank
+verlasse die Fachschaftsküche.
+Gehe zum Aufzug.
+Fahre ins Erdgeschoss.
+Gehe zum Getränkeautomaten.
 
-    Ich beende den gesamten Vorgang.
+
+// Getränk im Getränkeautomaten kaufen
+
+Wenn Eistee ∈ Getränkeautomaten:
+    Wähle Eistee am Automaten
+    Bezahle den Eistee
+    Nehme den Eistee aus dem Automaten
+    Trinke den Eistee
+    Beende den gesamten Vorgang
 Sonst:
-    Ich wähle Cola Zero am Automaten aus.
-    Ich bezahle die Cola Zero.
-    Ich nehme die Cola Zero aus dem Automaten.
-    Ich trinke die Cola Zero.
-
-    Ich beende den gesamten Vorgang.
+    Wähle Cola Zero am Automaten
+    Bezahle den Cola Zero
+    Nehme den Cola Zero aus dem Automaten
+    Trinke den Cola Zero
+    Beende den gesamten Vorgang
 ``` 
 
-### Aufgabe b) ""TO-DO
+### Aufgabe b)
+
+Ein Getränkeautomat ist ein rechteckiger Kasten. Er ist an der Vorderseite mit einer Glasscheibe ausgestattet, die es dir ermöglicht in das Innere des Automaten zu sehen, wo verschiedene Getränke in einzelnen Fächern in einem Raster angeordnet sind. 
+
+Diese Getränke kannst du anhand ihrer Farben, Formen und Beschriftungen unterscheiden. Jedes Fach, in dem sich ein Getränk befindet, ist mit einer spezifischen Nummer versehen, die du benötigst, um das gewünschte Getränk auszuwählen.
+
+Um dein Getränk zu wählen, musst du die entsprechende Nummer über ein Tastenfeld eingeben. Dieses befindet sich rechts mittig neben der Glasscheibe auf einem Bedienfeld.
+
+Das Tastenfeld besteht aus 12 Tasten: den Nummerntasten 0-9, einer Abbruchtaste und einer Bestätigungstaste.
+
+Jede Taste ist ein kleines Rechteck, welches du durch leichten Druck bedienen kannst, damit der Automat eine Aktion durchführt.
+
+Um die Auswahl eines Getränks zu treffen, verwendest du die Tasten 0-9. Für jede Ziffer (von links nach rechts) der gewünschten Nummer wählst du die jeweilige Taste mit derselben Nummer.
+
+Die Abbruchtaste kann verwendet werden, um die Eingabe zu beenden und die Auswahl abzubrechen.
+
+Sobald Zahl vollständig eingegeben wurde, bestätigst du deine Auswahl, indem du die Bestätigungstaste drückst.
+
 
 ## Aufgabe Socken
 
@@ -85,24 +90,25 @@ Auf unendliche Zeit gesehen, wird dieser Code garantiert terminieren. Zwar könn
 
 Im schlimmsten Fall muss jede  ``Referenzsocke`` alle anderen Socken von ``ungepaarter_stapel`` durchsuchen, bis sie ihr Paar findet.
 
-Die while schleife läuft genau $n/2$ durch, da sie jeden Durchgang 2 Socken entfernt und ein Paar bildet.
-
 In einer zufällgen $k$-ten Iteration sind noch $n-2\cdot(k-1)$ Socken da.
 
 $$
 \begin{split}
     It_1&: 100-2*(1-1)=100\\
     It_2&: 100-2*(2-1)=98\\
-    It_n&:...
+    It_n&: \space ...
 \end{split}
 $$
 
-Dazu kommt, dass in dieser $k$-ten Interation eine Referenzsocke abgezogen wurde. Daraus folgt:
+Dazu kommt, dass in dieser $k$-ten Interation eine Referenzsocke abgezogen wurde.
+Die while Schleife läuft genau $n/2$ durch, da sie jeden Durchgang 2 Socken entfernt und ein Paar bildet.
+
+Daraus folgt:
 
 $$
 \begin{split}
-    \sum_{k=1}^{\frac n2} &= n-2\cdot(k-1)-1\\
-    &=n-2k+2-1
+    \sum_{k=1}^{\frac n2} &= n-2\cdot(k-1)-1
+    \\&=n-2k+2-1
     \\&=n-2k+1
 \end{split}
 $$
