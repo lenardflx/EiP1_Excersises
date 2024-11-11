@@ -44,15 +44,13 @@ Wenn Eistee ∈ Getränkeautomaten:
     Beende den gesamten Vorgang
 Sonst:
     Wähle Cola Zero am Automaten
-    Bezahle die Cola Zero
-    Nehme die Cola Zero aus dem Automaten
-    Trinke die Cola Zero
-    Beende die gesamten Vorgang
+    Bezahle den Cola Zero
+    Nehme den Cola Zero aus dem Automaten
+    Trinke den Cola Zero
+    Beende den gesamten Vorgang
 ``` 
 
 ### Aufgabe b)
-
-**Schritt: Nehme Eistee / Cola Zero aus dem Automaten**
 
 Ein Getränkeautomat ist ein rechteckiger Kasten. Er ist an der Vorderseite mit einer Glasscheibe ausgestattet, die es dir ermöglicht in das Innere des Automaten zu sehen, wo verschiedene Getränke in einzelnen Fächern in einem Raster angeordnet sind. 
 
@@ -86,7 +84,7 @@ während ungepaarter_stapel nicht leer ist:
     else:
         füge beide Socken wieder zu ungepaarter_stapel hinzu
 ```
-Auf unendliche Zeit gesehen, wird dieser Algorithmus garantiert terminieren. Zwar können dieselben Paare an Stapeln immer wieder gezogen werden, wodurch dieser Algorithmus extrem ineffizient ist, jedoch verringert sich die Menge von ``ungepaarter_stapel`` bei jedem erfolgreich gefundenen Paar. Die ersten Paare werden dabei am längsten brauchen.
+Auf unendliche Zeit gesehen, wird dieser Code garantiert terminieren. Zwar können dieselben Paare an Stapeln immer wieder gezogen werden, jedoch verringert sich die Menge von ``ungepaarter_stapel`` stetig.
 
 ### Aufgabe 2)
 
@@ -173,26 +171,21 @@ Im Vergleich zum Algorithmus aus Aufgabe 2 reduziert sich die Laufzeit, da jede 
 ```
 n ist eine beliebige positive rationale Zahl
 x1 ist ein Startwert für die Näherung 
-Genauigkeit = 0.00001
+Genauigkeit = 0.00001  // die fünf Nachkommastellen
 
 Wiederhole bis Schleife unterbrochen wird:
-    h = n / x
-    Wenn |h - x1| < Genauigkeit
-        x1 ist die Näherung der Quadratwurzel von n
-        beennde programm
-    x1 = (x1 + h) / 2
-```
 
-Optimierte Schreibweise:
-```
-n ist eine beliebige positive rationale Zahl
-x1 ist ein Startwert für die Näherung 
-Genauigkeit = 0.00001
+    h = n / x  //  x1 * h = n
+    Wenn h == x1
+        x (=x1) gefunnden
+        beende programm und gebe x1 zurück
 
-solange |(n / x1) - x1| >= Genauigkeit:
-    x1 = ((n / x1) + x1) / 2
-
-x1 ist die Näherung der Quadratwurzel von n
+    xNeu = (x1 + h) / 2
+    Wenn |xNeu - x1| < Genauigkeit
+        x gefunden
+        runde xNeu auf 5 Nachkommastellen
+        beende programm und gebe xNeu zurück
+    x1 = xNeu
 ```
 ### Aufgabe 2)
 > Alle werte sind auf 5 Nachkommastellen gerundet
