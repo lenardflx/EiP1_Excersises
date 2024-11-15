@@ -1,22 +1,24 @@
 # Aufgabe 1a:
 
-for i in range(10):
-    if i + 1 != 10:
-        print(i + 1)
+n = 10
+for i in range(1,n+1):
+    if i != 10:
+        print(i)
     else:
         print("aus")
 
-print("----")
+print("\n----\n")
 
 # Aufgabe 1b:
 
-for i in range(4):
-    if i + 1 == 3:
-        print(i + 1, "sie ist der hellste Stern von allen")
+n = 4
+for i in range(1,n+1):
+    if i  == 3:
+        print(f"{i}, sie ist der hellste Stern von allen")
     else:
-        print(i + 1, "hier kommt die Sonne")
+        print(f"{i}, hier kommt die Sonne")
 
-print("----")
+print("\n----\n")
 
 # Aufgabe 2:
 
@@ -25,6 +27,7 @@ gifts = [
     'swans a-swimming', 'maids a-milking', 'ladies dancing', 'lords a-leaping', 'pipers piping', 'drummers drumming'
 ]
 
+# Zahlen als Wörter
 cardinal = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve"]
 ordinal = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh",
            "twelfth"]
@@ -32,12 +35,12 @@ ordinal = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "e
 for day in range(12):  # Für jede Strophe
     print("On the", ordinal[day], "day of Christmas my true love sent to me")
 
-    for n in range(day + 1):  # Für jede "spezial" Zeile der Strophe
-        verse = day - n
-        if day > 0 and verse == 0:
+    for n in range(day + 1):  # Für jede Zeile der Strophe
+        verse = day - n # rückwärts zählen
+        if day > 0 and verse == 0: # Für Verse 2 bis 12
             print("And a partridge in a pear tree.")
-        elif verse == 0:
+        elif verse == 0: # Für Vers 1
             print("A partridge in a pear tree.")
         else:
-            print(cardinal[verse], gifts[verse] + ",")
+            print(f"{cardinal[verse]} {gifts[verse]},")
     print()  # Leerzeile nach jeder Strophe

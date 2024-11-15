@@ -24,4 +24,4 @@ Aufgabe 3
 
 Gesamtpunktzahl
 ===============
-     erreichte Punkte: 0 / 40 Pkt
+     erreichte Punkte: 38.5 / 40 Pkt

@@ -6,16 +6,14 @@ if __name__ == "__main__":
     # Größenangaben
     text_size = (110, 16)  # Geschätzt
     screen_size = (640, 240)  # Geschätzt
-    center = (  # Bildschirmmitte
+    center = (  # Bildschirmmitte (Abzüglich der Textgröße, da Position des Textes die obere linke Ecke ist)
         (screen_size[0] - text_size[0]) // 2,
         (screen_size[1] - text_size[1]) // 2
     )
+    padding = 10  # Zusätzlicher Abstand um den Text
 
-    # Schreiben des Textes
+    # Text zeichnen und umrahmen
     bio.draw_text(center[0], center[1], "Hello World")
-
-    # Rahmen um den Text
-    padding = 10  # Abstand um den Text
     bio.draw_rectangle(center[0] - padding,
                        center[1] - padding,
                        text_size[0] + 2 * padding,

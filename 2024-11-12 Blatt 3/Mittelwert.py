@@ -14,6 +14,10 @@ for x in values:
     temp += (x - average) ** 2
 variance = 1 / n * temp
 
+# Zusatz: Standardabweichung
+std_dev = variance ** 0.5
+
 # Ausgabe
 print("Mittelwert:", average)
 print("Varianz:", variance)
+print("Standardabweichung:", std_dev)
