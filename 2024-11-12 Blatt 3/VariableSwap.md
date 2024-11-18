@@ -21,14 +21,15 @@ x = y
 y = x
 ```
 
-Im ersten Schritt wird ``x`` der Wert von ``y`` (hier 15) zugewiesen, wodurch der ursprüngliche Wert von ``x`` überschrieben
-wird.
-Im nächsten Schritt erhält ``y`` den Wert von ``x`` (da dieser bereits auf 15 gesetzt wurde, wird ``y`` ebenfalls auf 15 gesetzt).
+In Python werden Befehle von oben nach unten ausgeführt.
+Im ersten Schritt wird ``x`` der Wert von ``y`` (hier 15) zugewiesen, und der ursprüngliche Wert von ``x`` überschrieben.
+Im zweiten Schritt erhält ``y`` den neuen Wert von ``x`` (auch 15, da ``x`` bereits modifiziert wurde).
+Beide Werte sind nun 15, nicht getauscht.
 
-### 2) Wie müsste der Programmcode aussehen, damit die Werte von beiden Variablen getauscht werden?
+### 2) Wie müsste der code aussehen, damit die Werte getauscht werden?
 
-Um die Werte zu tauschen, muss der ursprüngliche Wert von ``x`` zuerst in einer weiteren Variable gespeichert werden.
-Danach kann der Wert von ``y`` auf ``x`` und der zwischengespeicherte Wert auf ``y`` gesetzt werden:
+Um die Werte zu tauschen, muss der ursprüngliche Wert von ``x`` in einer weiteren Variable gespeichert werden.
+Danach kann der Wert von ``y`` auf ``x`` und der gespeicherte Wert auf ``y`` gesetzt werden:
 
 ```python
 temp = x
@@ -36,7 +37,7 @@ x = y
 y = temp
 ```
 
-Alternativ kann man diese Python Syntax verwenden, um die Werte direkt zu tauschen:
+Alternativ kann man die genannte Tuple-Assignment Syntax verwenden:
 
 ```python
 x, y = y, x

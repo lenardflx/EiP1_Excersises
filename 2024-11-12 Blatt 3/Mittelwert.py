@@ -14,10 +14,10 @@ for x in values:
     temp += (x - average) ** 2
 variance = 1 / n * temp
 
-# Zusatz: Standardabweichung
-std_dev = variance ** 0.5
+# Da namentlich genannt auch Standardabweichung:
+standard_deviation = variance ** 0.5 # Mal 0.5 => sqrt
 
 # Ausgabe
 print("Mittelwert:", average)
 print("Varianz:", variance)
-print("Standardabweichung:", std_dev)
+print("Standardabweichung:", standard_deviation)
