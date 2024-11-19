@@ -2,12 +2,10 @@ from math import cos, sin, pi
 from time import sleep
 from jguvc_eip import basic_io as bio
 
-# Daten
-OMEGA = 0.05
+# Parameter
+OMEGA_VAL = 1
 PENDULUM_LEN = 200
-PENDULUM_BALL_RAD = 20
 ANCHOR_POINT = (300, 0)
-MAX_CIRCLE_RADIUS = 100
 CIRCLES = [
     ((104, 137, 255), 20),
     ((63, 81, 181), 40),
@@ -19,7 +17,7 @@ CIRCLES = [
 # Male die Kreise
 def draw_concentric_circle(t, circle_center):
     for color, initial_radius in CIRCLES: # Iteriere durch alle Kreise
-        current_radius = (initial_radius - t) % MAX_CIRCLE_RADIUS # Berechne den Radius
+        current_radius = (initial_radius - t) % 100 # Berechne den Radius
         bio.draw_circle(
             circle_center[0], circle_center[1],
             current_radius, fill_color=None, border_color=color
@@ -36,19 +34,20 @@ def draw_pendulum(angle):
         x, y, color=(0, 0, 0), thickness=2
     )
     # Zeichne den Pendel
-    bio.draw_circle(x, y, PENDULUM_BALL_RAD)
+    bio.draw_circle(x, y, 20)
 
     return x, y
 
 if __name__ == "__main__":
     bio.start()
     curr_t = 0
+    omega = OMEGA_VAL * pi / 100
     while True:
         bio.clear_image()
 
-        angle = (pi / 4) * sin(curr_t * OMEGA)
+        curr_angle = (pi / 4) * sin(curr_t * omega)
 
-        position = draw_pendulum(angle)
+        position = draw_pendulum(curr_angle)
         draw_concentric_circle(curr_t, position)
 
         curr_t += 1
