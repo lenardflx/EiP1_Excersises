@@ -21,30 +21,32 @@ def draw_house():
     bio.draw_polygon([(400, 90), (460, 75), (520, 90)],
                      fill_color=house_color,border_thickness=2)
 
-# 3) und 4) Auto vor und hinter Haus vorbeifahren
-def draw_screen(car_position,behind_house=False):
-    while car_position[0] < 520: # Ende vom Bildschirm
-        bio.clear_image()
-        if behind_house:
-            # erst Haus, dann Auto
-            draw_car(car_position)
-            draw_house()
-        else:
-            # erst Auto, dann Haus
-            draw_house()
-            draw_car(car_position)
-        car_position[0] += 2
-        sleep(0.016)
 
 if __name__ == "__main__":
     bio.start()
 
-    # Auto vor Haus
-    draw_screen([10, 160],False)
+    # 3) Auto vor Haus
+    bio.print_message("Auto fährt vor Haus")
+    car_position = [10, 160]
+    while car_position[0] < 520:  # Ende vom Bildschirm
+        bio.clear_image()
+        draw_house()
+        draw_car(car_position)
+        car_position[0] += 2
+        sleep(0.016)
+    bio.print_message("Auto hält an")
+    bio.print_message("Kurze Pause :)")
+    sleep(3)
 
-    sleep(5)
-
-    # Auto hinter Haus
-    draw_screen([10, 160],True)
+    # 4) Auto hinter Haus
+    bio.print_message("Auto fährt hinter Haus")
+    car_position = [10, 160]
+    while car_position[0] < 520:  # Ende vom Bildschirm
+        bio.clear_image()
+        draw_car(car_position)
+        draw_house()
+        car_position[0] += 2
+        sleep(0.016)
+    bio.print_message("Auto hält an")
 
     bio.wait_close()

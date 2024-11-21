@@ -6,7 +6,7 @@ from time import sleep
 CENTER = (320, 140)
 RECTANGLE_SIZE = 70
 TRIANGLE_LENGTH = 70
-SPEED = 2
+SPEED:float = 1
 
 # Umrechnung von Koordinaten gegeben in Aufgabenstellung (und umrechnen in radians, da "math" dies voraussetzt)
 def rotate_point_coord(coordinates, angle):

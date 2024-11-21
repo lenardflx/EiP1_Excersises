@@ -5,7 +5,7 @@ from jguvc_eip import basic_io as bio
 # Konstanten
 SPEED:float = 1.5
 OMEGA = 1
-PENDULUM_LEN = 50
+PENDULUM_LEN = 200
 ANCHOR_POINT = (320, 0)
 CIRCLES = [
     ((104, 137, 255), 20),
