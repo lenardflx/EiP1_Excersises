@@ -10,25 +10,38 @@ SPEED: float = 1.5
 
 # Vorab Berechnungen
 HALF_RECTANGLE_SIZE = RECTANGLE_SIZE // 2
+
+LEFT_CORNER = CENTER[0] - HALF_RECTANGLE_SIZE
+RIGHT_CORNER = CENTER[0] + HALF_RECTANGLE_SIZE
+TOP_CORNER = CENTER[1] - HALF_RECTANGLE_SIZE
+BOTTOM_CORNER = CENTER[1] + HALF_RECTANGLE_SIZE
+
 RECTANGLE_CORNERS = [
-    (CENTER[0] - HALF_RECTANGLE_SIZE, CENTER[1] - HALF_RECTANGLE_SIZE),  # Oben links
-    (CENTER[0] + HALF_RECTANGLE_SIZE, CENTER[1] - HALF_RECTANGLE_SIZE),  # Oben rechts
-    (CENTER[0] + HALF_RECTANGLE_SIZE, CENTER[1] + HALF_RECTANGLE_SIZE),  # Unten rechts
-    (CENTER[0] - HALF_RECTANGLE_SIZE, CENTER[1] + HALF_RECTANGLE_SIZE)  # Unten links
+    (LEFT_CORNER, TOP_CORNER),      # Oben links
+    (RIGHT_CORNER, TOP_CORNER),     # Oben rechts
+    (RIGHT_CORNER, BOTTOM_CORNER),  # Unten rechts
+    (LEFT_CORNER, BOTTOM_CORNER)    # Unten links
 ]
+
 TRIANGLE_CORNERS = [
-    (CENTER[0], CENTER[1] - HALF_RECTANGLE_SIZE - TRIANGLE_LENGTH),  # Spitze
-    (CENTER[0], CENTER[1] - HALF_RECTANGLE_SIZE),  # Mitte
-    (CENTER[0] + HALF_RECTANGLE_SIZE, CENTER[1] - HALF_RECTANGLE_SIZE)  # Ecke
+    (CENTER[0], TOP_CORNER - TRIANGLE_LENGTH),  # Spitze
+    (CENTER[0], TOP_CORNER),                    # Mitte
+    (RIGHT_CORNER, TOP_CORNER)                  # Ecke
 ]
 
 
-# Umrechnung von Koordinaten gegeben in Aufgabenstellung (und umrechnen in radians, da "math" dies benötigt)
+# Umrechnung von Koordinaten gegeben in Aufgabenstellung
 def rotate_point_coord(coordinates, angle):
-    cos_angle = cos(radians(angle))
-    sin_angle = sin(radians(angle))
-    x = (coordinates[0] - CENTER[0]) * cos_angle - (coordinates[1] - CENTER[1]) * sin_angle + CENTER[0]
-    y = (coordinates[0] - CENTER[0]) * sin_angle + (coordinates[1] - CENTER[1]) * cos_angle + CENTER[1]
+    angle_radians = radians(angle)
+    cos_angle = cos(angle_radians)
+    sin_angle = sin(angle_radians)
+
+    offset_x = coordinates[0] - CENTER[0]
+    offset_y = coordinates[1] - CENTER[1]
+
+    x = offset_x * cos_angle - offset_y * sin_angle + CENTER[0]
+    y = offset_x * sin_angle + offset_y * cos_angle + CENTER[1]
+
     return int(x), int(y)
 
 
@@ -49,9 +62,9 @@ if __name__ == "__main__":
     curr_angle = 0
     while True:
         bio.clear_image()
-        draw_rot_rectangle(curr_angle)  # Umrechnung von Grad in Bogenmaß
+        draw_rot_rectangle(curr_angle)
         for n in range(4):
-            draw_triangle(curr_angle + n * 90)  # Umrechnung von Grad in Bogenmaß + 90 Grad pro Dreieck
+            draw_triangle(curr_angle + n * 90)
         curr_angle = (curr_angle + SPEED) % 360
         sleep(0.016)
     # bio.wait_close() Programm wird nie beendet, daher irrelevant
