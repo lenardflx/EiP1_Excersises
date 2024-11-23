@@ -11,7 +11,7 @@ ANGLE_INC = 0.05
 # Vorab Berechnungen
 h = RECTANGLE_SIZE // 2
 REC_CORNERS_OFF = [(-h, -h), (h, -h), (h, h), (-h, h)]  # Rechteck
-TRI_CORNERS_OFF_LIST = [[(0, -h - TRIANGLE_LENGTH), (0, -h), (h, -h)],   # Dreieck Oben
+TRI_CORNERS_OFF_LIST = [[(0, -h - TRIANGLE_LENGTH), (0, -h), (h, -h)],    # Dreieck Oben
                         [(h + TRIANGLE_LENGTH, 0), (h, 0), (h, h)],       # Dreieck Rechts
                         [(0, h + TRIANGLE_LENGTH), (0, h), (-h, h)],      # Dreieck Unten
                         [(-h - TRIANGLE_LENGTH, 0), (-h, 0), (-h, -h)]]   # Dreieck Links
