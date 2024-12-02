@@ -1,13 +1,14 @@
 from time import sleep
 from jguvc_eip import basic_io as bio
 
-SIZE, IMG_SIZE, CORNER_OFF, FPS = (640, 480), (48, 25), 10, 60
+# Parameter
+SIZE, IMG_SIZE, CORNER_OFF, FPS = (640, 480), (48, 25), 10, 600 # FPS höher, damit schneller
 
 if __name__ == "__main__":
     bio.start()
     pos = [(SIZE[i]-IMG_SIZE[i])//2 for i in (0,1)]
     direc, flag,count = [1,1], False,0
-    image = bio.load_image("dvd_selfmade.png")
+    image = bio.load_image("dvd_selfmade_own.png") # Eigene Version
 
     while True:
         bio.clear_image()
