@@ -1,12 +1,12 @@
 # Punkte
-Blatt 2: 38.5 / 40 Pkt
-Blatt 3: 40 / 40 Pkt
+- Blatt 2: 38.5 / 40 Pkt
+- Blatt 3: 40 / 40 Pkt
+- Blatt 4: 40 / 40 Pkt
 
----
-Gesamt: 78.5 / 80 Pkt
+**Gesamt: 118.5 / 120 Pkt**
 
 # Vorträge
-Lenard: 2x
-Milasin: 2x
-Julian: 2x
-Jonas: 1x
+- Lenard: 3x
+- Milasin: 2x !
+- Julian: 3x
+- Jonas: 2x !
