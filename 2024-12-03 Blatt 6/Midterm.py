@@ -1,15 +1,43 @@
 # 1)
 def get_roman_number(n):
-    return ["I","II","III","IV","V","VI","VII","VIII","IX","X"][n-1] if 0 < n < 11 else None
+    if not (0 < n < 11):
+        return None
+    roman_numerals = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+    return roman_numerals[n - 1]
+
 def sum_roman(x, y):
-    return get_roman_number(x + y) if 0 < x < 11 and 0 < y < 11 and (x + y) <= 10 else "Fehler"
+    res = x + y
+    if all(1 <= v <= 10 for v in (x, y, res)):
+        return get_roman_number(res)
+    return "Fehler"
+
 # 2)
 def trib(n):
-    return 1 if n in [1,2] else 2 if n == 3 else trib(n-1) + trib(n-2) + trib(n-3)
+    if n == 1 or n == 2:
+        return 1
+    elif n == 3:
+        return 2
+    else:
+        return trib(n-1) + trib(n-2) + trib(n-3)
+
 # 3)
 def search_max(lst):
-    return lst[0] if len(lst) == 1 or lst[0] > (m := search_max(lst[1:])) else m
+    if len(lst) == 1:
+        return lst[0]
+    other_max = search_max(lst[1:])
+    return other_max if lst[0] < other_max else lst[0]
+
 # Tests
-tests = [[sum_roman,[[2,4],[12,3],[5,6]]],[trib,[[1],[3],[12],[20]]],[search_max,[[[1,2,3,4]],[[91,3,34,23,5,71]]]]]
-for n, (f, t) in enumerate(tests,1):
-    print(f"\nAufgabe {n}:\n" + "\n".join(f"{f.__name__}{tuple(arg)} = {f(*arg)}" for arg in t))
+print("\nAufgabe 1:")
+print(f"sum_roman(2, 4) = {sum_roman(2, 4)}")
+print(f"sum_roman(12, 3) = {sum_roman(12, 3)}")
+print(f"sum_roman(5, 6) = {sum_roman(5, 6)}")
+
+print("\nAufgabe 2:")
+print(f"trib(3) = {trib(3)}")
+print(f"trib(12) = {trib(12)}")
+print(f"trib(20) = {trib(20)}")
+
+print("\nAufgabe 3:")
+print(f"search_max([1, 2, 4, 3, 4]) = {search_max([1, 2, 4, 3, 4])}")
+print(f"search_max([91, 3, 34, 23, 5, 71]) = {search_max([91, 3, 34, 23, 5, 71])}")
