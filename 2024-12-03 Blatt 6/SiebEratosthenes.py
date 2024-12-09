@@ -3,39 +3,36 @@ def iter_get_primes(n: int) -> list:
     for i in range(2,n):
         if state[i]:
             primes.append(i)
-            for j in range(i**2,n,i):
+            for j in range(i*2,n,i):
                 state[j] = False
     return primes
 
 def semi_rec_get_primes(n: int) -> list:
-    def rec(primes, current):
-        if current >= len(primes) or primes[current] ** 2 > primes[-1]:
+    def rec(primes, state, current):
+        if current >= n:
             return primes
-
-        filtered = []
-        for x in primes:
-            if x == primes[current] or x % primes[current] != 0:
-                filtered.append(x)
-        return rec(filtered, current + 1)
-
-    return rec(list(range(2, n+1)),0)
+        if state[current]:
+            primes.append(current)
+            for j in range(current*2, n, current):
+                state[j] = False
+        return rec(primes, state, current + 1)
+    return rec([], [True]*n, 2)
 
 def rec_get_primes(n: int) -> list:
-    def rec(primes, current):
-        if current >= len(primes) or primes[current] ** 2 > primes[-1]:
+    def rm_multiples(state, nbr, current):
+        if current >= n:
+            return
+        state[current] = False
+        rm_multiples(state, nbr, current + nbr)
+    def rec(primes, state, current):
+        if current >= n:
             return primes
+        if state[current]:
+            primes.append(current)
+            rm_multiples(state, current, current*2)
+        return rec(primes, state, current + 1)
+    return rec([], [True]*n, 2)
 
-        def rm_multiples(curr_primes: list, nbr: int) -> list:
-            if not curr_primes:
-                return []
-
-            nxt = rm_multiples(curr_primes[1:], nbr)
-            if curr_primes[0] == nbr or curr_primes[0] % nbr != 0:
-                return [curr_primes[0]] + nxt
-            return nxt
-
-        return rec(rm_multiples(primes, primes[current]), current + 1)
-    return rec(list(range(2, n+1)),0)
 
 # Ist n keine Primzahl, so hat n einen Teiler a mit a <= sqrt(n)
 def simple_get_primes(n: int) -> list:
