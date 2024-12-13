@@ -4,7 +4,7 @@
 - Blatt 4: 40 / 40 Pkt
 - Blatt 5: 38 / 40 Pkt
 
-**Gesamt: 118.5 / 120 Pkt**
+**Gesamt: 156.5 / 160 Pkt**
 
 # Vorträge
 - Lenard: 4x
