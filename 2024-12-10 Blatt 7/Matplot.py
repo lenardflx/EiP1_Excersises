@@ -10,26 +10,13 @@ x_axis = np.arange(data.shape[0])
 y_height = 150
 
 # Histogrammdaten
-rsk_min = np.min(rr)
-rsk_max = np.max(rr)
-print(rsk_min, rsk_max)
-bins = np.linspace(rsk_min, rsk_max, 6)
+rr_min = np.min(rr)
+rr_max = np.max(rr)
+bins = np.linspace(rr_min, rr_max, 6)
 counts, bin_edges = np.histogram(rr, bins=bins)
 
 def display_bio1():
     bio.start()
-
-    # Achsen
-    bio.draw_line(5, y_height, 640, y_height)
-    bio.draw_line(5, 0, 5, y_height)
-    bio.draw_text(550, y_height + 10, "Tage (x)")
-    bio.draw_text(10, 5, "Werte (y)")
-
-    # Ticks
-    for x_tick in range(5, 640, 5):
-        bio.draw_line(x_tick, y_height, x_tick, y_height + 5)
-    for y_tick in range(0, y_height, 5):
-        bio.draw_line(0, y_height - y_tick, +5, y_height - y_tick)
 
     # Regeniagramm
     for x in x_axis:
@@ -43,6 +30,18 @@ def display_bio1():
             int(x_axis[i + 1]) + 5, int(y_height - tx[i + 1]),
             color=(255, 0, 0)
         )
+
+    # Achsen
+    bio.draw_line(5, y_height, 640, y_height)
+    bio.draw_line(5, 0, 5, y_height)
+    bio.draw_text(550, y_height + 10, "Tage (x)")
+    bio.draw_text(10, 5, "Werte (y)")
+
+    # Ticks
+    for x_tick in range(5, 640, 5):
+        bio.draw_line(x_tick, y_height, x_tick, y_height + 5)
+    for y_tick in range(0, y_height, 5):
+        bio.draw_line(0, y_height - y_tick, +5, y_height - y_tick)
 
     bio.wait_close()
 
@@ -58,16 +57,11 @@ def display_plt1():
     plt.ylabel("Werte", fontsize=12)
     plt.title("Temperatur und Niederschlag", fontsize=14)
     plt.legend()
+
     plt.show()
 
 def display_bio2():
     bio.start()
-
-    # Achsen
-    bio.draw_line(40, y_height, 640, y_height)
-    bio.draw_line(40, 0, 40, y_height)
-    bio.draw_text(475, y_height + 20, "Wertebereich (x)")
-    bio.draw_text(30, 10, "Anzahl (y)")
 
     # Histogramm
     bin_width = 75
@@ -84,6 +78,12 @@ def display_bio2():
         bio.draw_line(40, y_height - y_tick, 35, y_height - y_tick)
         bio.draw_text(5, y_height - y_tick - 5, str(y_tick * max_count // y_height))
 
+    # Achsen
+    bio.draw_line(40, y_height, 640, y_height)
+    bio.draw_line(40, 0, 40, y_height)
+    bio.draw_text(475, y_height + 20, "Wertebereich (x)")
+    bio.draw_text(30, 10, "Anzahl (y)")
+
     bio.wait_close()
 
 def display_plt2():
@@ -96,6 +96,7 @@ def display_plt2():
     plt.xlabel("Wertebereich", fontsize=12)
     plt.ylabel("Anzahl", fontsize=12)
     plt.title("Histogramm der Niederschlagswerte", fontsize=14)
+
     plt.show()
 
 if __name__ == "__main__":
