@@ -21,13 +21,15 @@ def mean_sections(m):
     plt.plot(x_means, means, color='orange', label=f'{m} Mittelwerte', linestyle='-')
 
 # Aufgabe 4
-def moving_average(n_partners=1):
+def moving_average(n_partners=1, skip_neighbors=False):
     moving_avgs = []
-    for i in range(n_partners, len(tx) - n_partners):
-        avg = np.mean([tx[i - n_partners], tx[i], tx[i + n_partners]])
-        moving_avgs.append(avg)
+    x_moving = []
 
-    x_moving = x_axis[n_partners:-n_partners]
+    for i in range(n_partners, len(tx) - n_partners, (n_partners * 2 + 1) if skip_neighbors else n_partners):
+        avg = np.mean(tx[i - n_partners:i + n_partners])
+        moving_avgs.append(avg)
+        x_moving.append(x_axis[i])
+
     plt.plot(x_moving, moving_avgs, color='orange', label='Laufender Mittelwert', linestyle='-')
 
 # Main
@@ -50,7 +52,7 @@ if __name__ == "__main__":
         n = int(input("Anzahl der Abschnitte: "))
         mean_sections(n)
     elif choice == "4":
-        moving_average(1)
+        moving_average(1,True)
 
     plt.legend()
     plt.show()
