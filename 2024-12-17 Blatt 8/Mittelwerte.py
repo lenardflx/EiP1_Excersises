@@ -52,7 +52,9 @@ if __name__ == "__main__":
         n = int(input("Anzahl der Abschnitte: "))
         mean_sections(n)
     elif choice == "4":
-        moving_average(1,True)
+        n = int(input("Anzahl der Partner: "))
+        skip = input("Nachbarn überspringen? (j/n): ").lower() == "j"
+        moving_average(n, skip)
 
     plt.legend()
     plt.show()
