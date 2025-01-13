@@ -33,14 +33,6 @@ def mat_prod(mat1, mat2):
 # Hier wird eine Schleife ohne Verschachtelung benötigt:
 # Wir iterieren über alle zahlen bis 10^10, wandeln sie in einen String um, ergänzen vorne Nullen und prüfen den Pin.
 
-def crack_pin(pin_length=10):
-    total_pins = 10 ** pin_length
-    for i in range(total_pins):
-        pin_str = str(i)
-        pin = "0" * (pin_length - len(pin_str)) + pin_str
-        if check_pin(pin):
-            return pin
-
 # Aufgabe 5
 # Hier werden drei verschachtelte Schleifen benötigt:
 # Für jede Liste iterieren wir über alle Elemente und legen sie als Kombination an.
@@ -62,18 +54,6 @@ print("Aufgabe 2: Matrixprodukt")
 print(f"{mat1[0]}   {mat2[0]}   {prod[0]}")
 print(f"{mat1[1]} x {mat2[1]} = {prod[1]}")
 print(f"{mat1[2]}   {mat2[2]}   {prod[2]}\n")
-
-PIN = "0001234321"
-def check_pin(pin: str):
-    """Checks if a pin is correct. Returns a bool.
-    Takes a pin given as a string as input.
-    """
-    assert isinstance(pin, str), "Pin needs to be a string"
-    assert len(pin) == 10, "Pin needs exactly 10 digits"
-    return pin == PIN
-
-print("Aufgabe 4b: Pin überprüfen")
-print(f"Pin is: {crack_pin()}\n")
 
 shoes=["vans", "boots", "chucks", "heels"]
 shirts=["dotted red shirt", "elegant black shirt", "trashy pink shirt"]
