@@ -3,35 +3,30 @@ import jguvc_eip.basic_io as bio
 from jguvc_eip import image_objects as iobj
 from time import sleep
 
-def iter_stack(numbers):
-    return iobj.HorizontalStack([iobj.Rectangle(10, n, fill_color=None) for n in numbers])
-
-def rec_stack(numbers):
-    if len(numbers) == 1:
-        return iobj.Rectangle(10, numbers[0], fill_color=None)
-    comp_obj = rec_stack(numbers[:-1])
-    rect = iobj.Rectangle(10, numbers[-1], fill_color=None)
-    return iobj.HorizontalStack([comp_obj, rect])
-
-def extract_from_rec_stack(obj):
-    if isinstance(obj, iobj.Rectangle):
-        return [obj]
-    return [item for o in obj.objects for item in extract_from_rec_stack(o)]
+def display(name, stack):
+    bio.print_message(name)
+    bio.draw_object(stack, 50, 50)
+    sleep(5)
+    bio.clear_image()
+    sleep(0.1)
 
 if __name__ == "__main__":
     bio.start()
 
     nums = [randint(0, 100) for _ in range(50)]
+    rects = [iobj.Rectangle(10, n, None) for n in nums]
 
-    itr = "Iterativ", iter_stack(nums)
-    rec = "Rekursiv", rec_stack(nums)
-    ext = "Extrahiert", iobj.HorizontalStack(extract_from_rec_stack(rec[1]))
+    itr = iobj.HorizontalStack(rects)
+    display("Iterativ", itr)
 
-    for name, stack in [itr, rec, ext]:
-        bio.print_message(name)
-        bio.draw_object(stack, 50, 50)
-        sleep(5)
-        bio.clear_image()
-        sleep(0.3)
+    comp_obj = rects[0]
+    for rec in rects[1:]:
+        comp_obj = iobj.HorizontalStack([comp_obj, rec])
+    display("Rekursiv", comp_obj)
 
-    bio.close_and_exit()
+    def extract(obj):
+        if isinstance(obj, iobj.HorizontalStack):
+            return [obj.objects[0]] + extract(obj.objects[1])
+        return [obj]
+    ext = iobj.HorizontalStack(extract(comp_obj))
+    display("Extrahiert", ext)
