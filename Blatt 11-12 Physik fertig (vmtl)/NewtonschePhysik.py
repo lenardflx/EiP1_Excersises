@@ -9,6 +9,7 @@ RECTANGLE_SIZE = 20
 LINE_HEIGHT = 200
 DELTA_TIME = 1 / 60
 PIXEL_METER_RATIO = 100
+DAMPING_FACTOR = 0.8
 
 model = iobj.VerticalStack([
     iobj.Rectangle(RECTANGLE_SIZE, RECTANGLE_SIZE),
@@ -22,18 +23,21 @@ if __name__ == "__main__":
     position = RECTANGLE_SIZE
     bio.start()
 
-    while position < LINE_HEIGHT:
+    while True:
         velocity += ACCELERATION * DELTA_TIME * PIXEL_METER_RATIO
         position += velocity * DELTA_TIME
 
         if position >= LINE_HEIGHT:
             position = LINE_HEIGHT
-            velocity = 0
+            velocity = -velocity * DAMPING_FACTOR
 
         off_circ = iobj.Translate(circ, 0, int(position))
         bio.clear_image()
         bio.draw_object(iobj.Overlay([model, off_circ]), *OFFSET)
 
         sleep(DELTA_TIME)
+
+        if abs(velocity) < 1 and position >= LINE_HEIGHT:
+            break
 
     bio.wait_close()
