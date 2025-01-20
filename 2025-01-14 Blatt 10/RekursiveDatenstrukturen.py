@@ -22,7 +22,10 @@ if __name__ == "__main__":
     comp_obj = rects[0]
     for rec in rects[1:]:
         comp_obj = iobj.HorizontalStack([comp_obj, rec])
+    def rec_comp(objs):
+        return objs[0] if len(objs) == 1 else iobj.HorizontalStack([objs[0], rec_comp(objs[1:])])
     display("Rekursiv", comp_obj)
+    display("Rekursiv (Funktion)", rec_comp(rects))
 
     def extract(obj):
         if isinstance(obj, iobj.HorizontalStack):
