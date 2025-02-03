@@ -1,13 +1,14 @@
-1a) Ja: Im schlimmsten Fall ist die richtige Lösung die letzte, die der Algorithmus findet oder
-    keine gute Abbruchbedingung vorhanden ist. Er würde in jedem Node alle n Möglichkeiten durchgehen. (2^n)
+1a) Ja: Im schlimmsten Fall muss der Algorithmus alle möglichen Lösungen durchprobieren,
+    was oft zu einer exponentiellen Laufzeit führt. Dadurch prüft er jede Kombination, was zu O(2^n) führt.
 
-1b) Nein: Ein jeder rekursive Algorithmus kann auch iterativ geschrieben werden,
-    indem der Stand als Stack gespeichert wird.
+1b) Nein: Theoretisch kann JEDER rekursive Algorithmus iterativ geschrieben werden.
+    Bei Backtracking kann der Zwischenstand in einem Stack gespeichert und später wieder aufgerufen werden.
 
-1c) Ja: Backtracking läuft in einer Baumstruktur, daher eignet es sich für solche Probleme.
+1c) Ja: Der Ablauf von Backtracking findet selbst in einer Baumstruktur statt,
+    da er schrittweise alle Möglichkeiten durchgeht. Daher eignet er sich für solche Probleme.
 
-1d) Nein: Es kann immer sinnvoll sein, für Vergleiche o.ä. for-Schleifen zu verwenden.
+1d) Nein: Vor allem für das iterieren durch verschiedene Möglichkeiten oder
+    Datenvergleich kann eine for schleife sinnvoll sein.
 
-1e) Ja: Im Bezug auf Backtracking prüft branch and bound zusätzlich, ob der aktuelle Pfad eine bessere
-    Lösung als die bisher beste ist. Aber "lediglich" ist hier falsch, da der Algorithmus
-    dadurch deutlich besser werden kann.
+1e) Ja: Durch Branch-and-Bound bleibt die Struktur des Algorithmus gleich. Es wird zusätzlich geprüft,
+    ob die aktuelle Lösung besser ist als die anderen. Das kann die Laufzeit aber start verbessern.

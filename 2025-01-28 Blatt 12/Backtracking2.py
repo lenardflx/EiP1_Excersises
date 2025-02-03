@@ -49,4 +49,4 @@ if __name__ == "__main__":
     print_map(maze)
     bio.wait_close()
 
-#2b: Alle weiteren Lösungen, die gefunden werden, haben weniger Schritte Zweige, als die Lösungen davor.
+#2b: Die Länge der löungen wird immer kürzer, da schlechtere nicht weiter verfolgt werden. (letzte Lösung ist die beste)
